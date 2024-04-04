@@ -55,14 +55,11 @@ reconnaissance_menu() {
     echo "11. nmap --source-port"
     echo "12. hping3 --traceroute -V -1"
     echo "13. nmap -D RND:10"
-    echo "14. masscan -p"
-    echo "15. tcpdump -i any icmp"
-    echo "16. masscan -p0-65535"
-    echo "17. masscan -p80,443"
-    echo "18. masscan -p23"
-    echo "19. masscan -p23"
-    echo "20. masscan -p23"
-    echo "21. Return to Main Menu"
+    echo "14. masscan -p0-65535"
+    echo "15. masscan -p80,443"
+    echo "16. masscan -p23"
+    echo "17. tcpdump -i any icmp"
+    echo "18. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -80,17 +77,15 @@ reconnaissance_menu() {
         11) custom_command "nmap --source-port" ;;
         12) custom_command "hping3 --traceroute -V -1" ;;
         13) custom_command "nmap -D RND:10" ;;
-        14) custom_command "masscan -p" ;;
-        15) custom_command "tcpdump -i any icmp" ;;
-        16) custom_command "masscan -p0-65535" ;;
-        17) custom_command "masscan -p80,443" ;;
-        18) custom_command "masscan -p23" ;;
-        19) custom_command "masscan -p23" ;;
-        20) custom_command "masscan -p23" ;;
-        21) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 21." && sleep 2 ;;
+        14) custom_command "masscan -p0-65535" ;;
+        15) custom_command "masscan -p80,443" ;;
+        16) custom_command "masscan -p23" ;;
+        17) custom_command "tcpdump -i any icmp" ;;
+        18) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 18." && sleep 2 ;;
     esac
 }
+
 
 # Function to display and execute enumeration commands
 enumeration_menu() {
