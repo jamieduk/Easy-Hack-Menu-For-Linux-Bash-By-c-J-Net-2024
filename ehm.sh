@@ -5,6 +5,7 @@
 # ./ehm.sh
 #
 set_custom_color() {
+	clear
     # Check if custom_col.set exists
     if [ ! -f "custom_col.set" ]; then
         # Define available colors with names and ANSI escape codes
