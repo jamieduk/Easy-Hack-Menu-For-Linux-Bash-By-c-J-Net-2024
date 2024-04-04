@@ -4,14 +4,12 @@
 #
 # ./ehm.sh
 #
-echo "Easy Hack Menu For Linux Bash By (c) J~Net 2024"
-
 
 
 # Function to display the main menu
 main_menu() {
     clear
-    echo "Easy Hack Menu (c) J~Net 2024"
+    echo -e "\033[1;32mEasy Hack Menu For Linux Bash By (c) J~Net 2024\033[0m"
     echo ""
     echo "### Main Menu ###"
     echo "1. Reconnaissance Commands"
