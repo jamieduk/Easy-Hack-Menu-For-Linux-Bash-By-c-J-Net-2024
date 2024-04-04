@@ -289,7 +289,7 @@ fun_menu() {
 
     case $choice in
         1) custom_command "sl" ;;
-        2) ollama Dolphin-Mixtral ;;
+        2) sudo apt install -y ollama && ollama run Dolphin-Mixtral ;;
         3) main_menu ;;
         *) echo "Invalid choice. Please enter a number between 1 and 3." && sleep 2 ;;
     esac
