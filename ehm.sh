@@ -131,7 +131,7 @@ custom_command() {
     $command --help
 
     # Prompt for customization
-    read -p "Enter any customization (e.g., -p port IP ): " customization
+    read -p "Enter Customization (e.g. -p port IP): " customization
 
     # Execute the customized command
     echo "Executing command: $command $customization"
