@@ -271,7 +271,7 @@ cleanup_menu() {
     read -p "Enter your choice: " choice
 
     case $choice in
-        1) custom_command "sudo apt install seclists" ;;
+        1) custom_command "sudo apt install -y seclists" ;;
         2) main_menu ;;
         *) echo "Invalid choice. Please enter a number between 1 and 2." && sleep 2 ;;
     esac
