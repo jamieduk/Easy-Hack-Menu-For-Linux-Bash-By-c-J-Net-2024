@@ -4,12 +4,78 @@
 #
 # ./ehm.sh
 #
+set_custom_color() {
+    # Check if custom_col.set exists
+    if [ ! -f "custom_col.set" ]; then
+        # Define available colors with names and ANSI escape codes
+        declare -A color_map=(
+            ["black"]="\033[0;30m" ["red"]="\033[0;31m" ["green"]="\033[0;32m" ["yellow"]="\033[0;33m"
+            ["blue"]="\033[0;34m" ["magenta"]="\033[0;35m" ["cyan"]="\033[0;36m" ["white"]="\033[0;37m"
+            ["bright_black"]="\033[1;30m" ["bright_red"]="\033[1;31m" ["bright_green"]="\033[1;32m"
+            ["bright_yellow"]="\033[1;33m" ["bright_blue"]="\033[1;34m" ["bright_magenta"]="\033[1;35m"
+            ["bright_cyan"]="\033[1;36m" ["bright_white"]="\033[1;37m"
+        )
+
+		# Print color options with color names and numbers
+		echo "Custom color file not found. Please select a color from the following list:"
+		index=1
+		for color_name in "${!color_map[@]}"; do
+			color_code="${color_map[$color_name]}"
+			# Print the option number without color
+			echo -n "$index. "
+			# Print the color name with its respective color
+			echo -e "$color_code$color_name\033[0m"  # Reset color after printing color name
+			((index++))
+		done
 
 
+        # Prompt user to select a color by number or name
+        read -p "Enter the number or name of the desired color: " selected_color
+        # Check if the input is a number
+        if [[ "$selected_color" =~ ^[0-9]+$ ]]; then
+            # Convert the number to an index
+            selected_color_index=$((selected_color-1))
+            # Check if the selected index is valid
+            if [ "$selected_color_index" -ge 0 ] && [ "$selected_color_index" -lt "${#color_map[@]}" ]; then
+                # Get the color name corresponding to the selected index
+                selected_color=$(printf '%s\n' "${!color_map[@]}" | sed -n "${selected_color}p")
+            else
+                echo "Invalid color selection."
+                return 1
+            fi
+        fi
+
+        # Check if the selected color exists
+        if [ -n "${color_map[$selected_color]}" ]; then
+            # Save selected color name and ANSI escape code to custom_col.set
+            echo "${color_map[$selected_color]}${color_map[$selected_color]}" > custom_col.set
+            echo "Custom color set to $selected_color."
+        else
+            echo "Invalid color selection."
+        fi
+    else
+        echo ""
+        clear
+    fi
+}
+
+
+
+# Test Colour
+set_custom_color
+
+#
 # Function to display the main menu
 main_menu() {
-    clear
-    echo -e "\033[1;32mEasy Hack Menu For Linux Bash By (c) J~Net 2024"
+custom_color=$(<custom_col.set)
+if [ -n "$custom_color" ]; then
+    colour=$custom_color
+else
+    colour="\033[1;32m"
+fi
+
+echo -e "${colour}Easy Hack Menu For Linux Bash By (c) J~Net 2024"
+
     echo ""
     echo "### Main Menu ###"
     echo "1. Reconnaissance Commands"
@@ -19,7 +85,7 @@ main_menu() {
     echo "5. Miscellaneous Commands"
     echo "6. Analysis Commands"
     echo "7. Cracking Commands"
-    echo "8. Fun Commands"
+    echo "8. Extra Commands & Settings"
     echo "9. Exit"
     echo "------------------"
     read -p "Enter your choice: " choice
@@ -32,7 +98,7 @@ main_menu() {
         5) miscellaneous_menu ;;
         6) analysis_menu ;;
         7) cracking_menu ;;
-        8) fun_menu ;;
+        8) extra_menu ;;
         9) exit ;;
         *) echo "Invalid choice. Please enter a number between 1 and 9." && sleep 2 ;;
     esac
@@ -273,19 +339,21 @@ cracking_menu() {
 }
 
 # Function to display and execute fun commands
-fun_menu() {
+extra_menu() {
     clear
     echo "### Fun Commands ###"
     echo "1. sl"
     echo "2. Ollama Dolphin-Mixtral"
-    echo "3. Return to Main Menu"
+    echo "3. Change Text Colour"
+    echo "4. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
     case $choice in
         1) custom_command "sl" ;;
         2) sudo apt install -y ollama && ollama run Dolphin-Mixtral ;;
-        3) main_menu ;;
+        3) rm custom_col.set && set_custom_color ;;
+        4) main_menu ;;
         *) echo "Invalid choice. Please enter a number between 1 and 3." && sleep 2 ;;
     esac
 }
