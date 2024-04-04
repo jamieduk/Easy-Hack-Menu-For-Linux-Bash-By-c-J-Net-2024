@@ -5,7 +5,7 @@ Easy Hack Menu For Linux Bash By (c) J~Net 2024
 
 Easy Hack Menu For Linux Bash is a customizable menu-driven script that provides a collection of commonly used hacking commands for penetration testing, ethical hacking, and security assessments.
 
-## Features
+## Features (All inspired by https://youtu.be/gL4j-a-g9pA?si=PKFm9RXMKL5NIVOr)
 
 - Menu-driven interface for easy navigation.
 - Categorization of commands for different stages of hacking.
