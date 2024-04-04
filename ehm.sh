@@ -9,7 +9,7 @@
 # Function to display the main menu
 main_menu() {
     clear
-    echo -e "\033[1;32mEasy Hack Menu For Linux Bash By (c) J~Net 2024\033[0m"
+    echo -e "\033[1;32mEasy Hack Menu For Linux Bash By (c) J~Net 2024"
     echo ""
     echo "### Main Menu ###"
     echo "1. Reconnaissance Commands"
