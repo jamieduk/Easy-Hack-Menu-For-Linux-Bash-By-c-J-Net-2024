@@ -126,17 +126,27 @@ enumeration_menu() {
     esac
 }
 
+
 # Function to execute a custom command after customization
 custom_command() {
     command=$1
+
+    # Print help information for the selected program
+    echo "Help information for $command:"
+    $command --help
+
+    # Prompt for customization
     read -p "Enter any customization (e.g., -p port IP ): " customization
+
+    # Execute the customized command
     echo "Executing command: $command $customization"
     sudo $command $customization
-    # Execute the customized command here
-    # Example: eval "$command $customization"
+
+    # Wait for user input before returning to the main menu
     read -p "Press Enter to continue..."
     bash ehm.sh
 }
+
 
 # Function to display and execute exploitation commands
 exploitation_menu() {
