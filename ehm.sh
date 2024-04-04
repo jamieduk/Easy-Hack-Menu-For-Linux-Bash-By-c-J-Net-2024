@@ -144,7 +144,8 @@ custom_command() {
 
     # Wait for user input before returning to the main menu
     read -p "Press Enter to continue..."
-    bash ehm.sh
+    #bash ehm.sh
+    main_menu
 }
 
 
