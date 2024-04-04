@@ -128,8 +128,9 @@ enumeration_menu() {
 # Function to execute a custom command after customization
 custom_command() {
     command=$1
-    read -p "Enter any customization (e.g., IP, port): " customization
+    read -p "Enter any customization (e.g., -p port IP ): " customization
     echo "Executing command: $command $customization"
+    sudo $command $customization
     # Execute the customized command here
     # Example: eval "$command $customization"
     read -p "Press Enter to continue..."
