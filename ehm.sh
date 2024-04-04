@@ -18,7 +18,7 @@ main_menu() {
     echo "4. Post-Exploitation Commands"
     echo "5. Miscellaneous Commands"
     echo "6. Analysis Commands"
-    echo "7. Cleanup Commands"
+    echo "7. Cracking Commands"
     echo "8. Fun Commands"
     echo "9. Exit"
     echo "------------------"
@@ -31,7 +31,7 @@ main_menu() {
         4) post_exploitation_menu ;;
         5) miscellaneous_menu ;;
         6) analysis_menu ;;
-        7) cleanup_menu ;;
+        7) cracking_menu ;;
         8) fun_menu ;;
         9) exit ;;
         *) echo "Invalid choice. Please enter a number between 1 and 9." && sleep 2 ;;
@@ -261,10 +261,10 @@ analysis_menu() {
     esac
 }
 
-# Function to display and execute cleanup commands
-cleanup_menu() {
+# Function to display and execute cracking commands
+cracking_menu() {
     clear
-    echo "### Cleanup Commands ###"
+    echo "### cracking Commands ###"
     echo "1. sudo apt install seclists"
     echo "2. Return to Main Menu"
     echo "------------------"
