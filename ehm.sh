@@ -1,5 +1,6 @@
 #!/bin/bash
 # Easy Hack Menu For Linux Bash By (c) J~Net 2024
+# https://github.com/jamieduk/Easy-Hack-Menu-For-Linux-Bash-By-c-J-Net-2024
 #
 # ./ehm.sh
 #
