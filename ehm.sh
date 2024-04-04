@@ -135,6 +135,7 @@ custom_command() {
     # Execute the customized command here
     # Example: eval "$command $customization"
     read -p "Press Enter to continue..."
+    bash ehm.sh
 }
 
 # Function to display and execute exploitation commands
