@@ -11,6 +11,8 @@ echo "Easy Hack Menu For Linux Bash By (c) J~Net 2024"
 # Function to display the main menu
 main_menu() {
     clear
+    echo "Easy Hack Menu (c) J~Net 2024"
+    echo ""
     echo "### Main Menu ###"
     echo "1. Reconnaissance Commands"
     echo "2. Enumeration Commands"
