@@ -282,16 +282,19 @@ fun_menu() {
     clear
     echo "### Fun Commands ###"
     echo "1. sl"
-    echo "2. Return to Main Menu"
+    echo "2. Ollama Dolphin-Mixtral"
+    echo "3. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
     case $choice in
         1) custom_command "sl" ;;
-        2) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 2." && sleep 2 ;;
+        2) ollama Dolphin-Mixtral ;;
+        3) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 3." && sleep 2 ;;
     esac
 }
+
 
 # Main program
 main_menu
