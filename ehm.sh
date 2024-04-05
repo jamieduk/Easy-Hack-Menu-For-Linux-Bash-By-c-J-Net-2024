@@ -207,7 +207,7 @@ check_disclaimer() {
 
 # Function to self-destruct script and scrub if disclaimer is rejected
 self_destruct() {
-    echo "Disclaimer rejected. Self-destructing script..."
+    echo "Disclaimer Rejected. Self-destructing!..."
     # Insert your scrubbing command here to securely delete sensitive data
     # Example: shred -u -z -n 10 sensitive_file
     # Note: Be extremely careful with the command you use to avoid unintended consequences
