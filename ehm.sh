@@ -244,6 +244,11 @@ display_disclaimer() {
     echo "Disclaimer Accepted!"
 
     command=$1
+    # Verify permissions if sudo is required
+    if [[ $command == *"sudo"* && $(id -u) -ne 0 ]]; then
+        echo "Error: This command requires elevated privileges. Please run the script with sudo."
+        return
+    fi
 
     # Print help information for the selected program
     echo "Help information for $command:"
@@ -411,6 +416,21 @@ extra_menu() {
     esac
 }
 
-
+# Function to install netcat package on Raspbian OS
+install_netcat() {
+    echo "netcat (nc) not found. Attempting to install it..."
+    if sudo apt update -y && sudo apt install -y netcat-openbsd; then
+        echo "netcat (nc) installed successfully."
+    elif sudo apt update -y && sudo apt install -y netcat-traditional; then
+        echo "netcat (nc) installed successfully."
+    else
+        echo "Error: Failed to install netcat (nc)."
+        # Handle specific error cases here, if needed
+    fi
+}
+# Install nc
+install_netcat
 # Main program
 main_menu
+
+
