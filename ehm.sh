@@ -221,10 +221,11 @@ display_disclaimer() {
     echo "                 CYBER SECURITY DISCLAIMER           "
     echo "====================================================="
     echo "WARNING: This script is intended for ethical hacking,"
-    echo "penetration testing, and white-hat security purposes"
-    echo "only. Any unauthorized use is strictly prohibited."
+    echo "Penetration testing, and white-hat security purposes"
+    echo "                     ONLY!                           "
+    echo "Any unauthorized use is strictly prohibited!"
     echo ""
-    read -p "Do you accept the terms of the disclaimer? (y/n): " choice
+    read -p "Do you accept the terms of use? (y/n): " choice
     case "$choice" in
         [yY]|[yY][eE][sS])
             touch disclaimer_accepted
@@ -240,7 +241,7 @@ display_disclaimer() {
 	if ! check_disclaimer; then
 		    display_disclaimer
     fi
-    echo "Disclaimer accepted. Proceeding with the script..."
+    echo "T.O.U Disclaimer Accepted!"
 
     command=$1
 
@@ -413,3 +414,5 @@ extra_menu() {
 
 # Main program
 main_menu
+
+
