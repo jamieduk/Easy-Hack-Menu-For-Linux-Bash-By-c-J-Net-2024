@@ -397,11 +397,18 @@ analysis_menu() {
 # Function to display and execute cracking commands
 cracking_menu() {
     clear
-    echo "### cracking Commands ###"
+    echo "### Cracking Commands ###"
     echo "1. Install Seclists"
     echo "2. hashcat"
     echo "3. John the Ripper"
-    echo "4. Return to Main Menu"
+    echo "4. Hydra"
+    echo "5. Medusa"
+    echo "6. Crowbar"
+    echo "7. RainbowCrack"
+    echo "8. Crunch"
+    echo "9. CeWL"
+    echo "10. RarCrack"
+    echo "11. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -409,8 +416,15 @@ cracking_menu() {
         1) custom_command "sudo apt install -y seclists" ;;
         2) custom_command "hashcat" ;;
         3) custom_command "john" ;;
-        4) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 4." && sleep 2 ;;
+        4) custom_command "hydra" ;;
+        5) custom_command "medusa" ;;
+        6) custom_command "crowbar" ;;
+        7) custom_command "rainbowcrack" ;;
+        8) custom_command "crunch" ;;
+        9) custom_command "cewl" ;;
+        10) custom_command "rarcrack" ;;
+        11) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 11." && sleep 2 ;;
     esac
 }
 
