@@ -445,9 +445,9 @@ extra_menu() {
 
 # Function to install netcat package on Raspbian OS
 install_netcat() {
-    echo "Checking if netcat (nc) is installed..."
+    #echo "Checking if netcat (nc) is installed..."
     if [ -x "$(command -v nc)" ]; then
-        echo "netcat (nc) is already installed."
+        echo ""
     else
         echo "netcat (nc) not found. Attempting to install it..."
         if sudo apt update -y && sudo apt install -y netcat-openbsd; then
