@@ -413,7 +413,7 @@ cracking_menu() {
     read -p "Enter your choice: " choice
 
     case $choice in
-        1) custom_command "sudo apt install -y seclists" ;;
+        1) custom_command "apt install -y seclists" ;;
         2) custom_command "hashcat" ;;
         3) custom_command "john" ;;
         4) custom_command "hydra" ;;
