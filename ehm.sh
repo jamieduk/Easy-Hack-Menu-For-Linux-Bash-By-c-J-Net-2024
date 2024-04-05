@@ -241,7 +241,7 @@ display_disclaimer() {
 	if ! check_disclaimer; then
 		    display_disclaimer
     fi
-    echo "T.O.U Disclaimer Accepted!"
+    echo "Disclaimer Accepted!"
 
     command=$1
 
@@ -414,5 +414,3 @@ extra_menu() {
 
 # Main program
 main_menu
-
-
