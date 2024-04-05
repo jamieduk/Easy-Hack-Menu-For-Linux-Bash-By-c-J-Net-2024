@@ -58,6 +58,8 @@ set_custom_color() {
         echo ""
         clear
     fi
+    clear
+    main_menu
 }
 
 # Test Colour
