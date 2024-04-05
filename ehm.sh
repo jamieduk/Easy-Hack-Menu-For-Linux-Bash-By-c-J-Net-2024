@@ -446,7 +446,11 @@ extra_menu() {
     echo "4. ifconfig"
     echo "5. netstat"
     echo "6. iptables"
-    echo "7. Return to Main Menu"
+    echo "7. top"
+    echo "8. htop"
+    echo "9. nload"
+    echo "10. iftop"
+    echo "11. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -457,8 +461,12 @@ extra_menu() {
         4) custom_command "ifconfig" ;;
         5) custom_command "netstat" ;;
         6) custom_command "iptables" ;;
-        7) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 7." && sleep 2 ;;
+        7) custom_command "top" ;;
+        8) custom_command "htop" ;;
+        9) custom_command "nload" ;;
+        10) custom_command "iftop" ;;
+        11) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 11." && sleep 2 ;;
     esac
 }
 
