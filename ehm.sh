@@ -408,12 +408,15 @@ cracking_menu() {
     echo "8. Crunch"
     echo "9. CeWL"
     echo "10. RarCrack"
-    echo "11. Return to Main Menu"
+    echo "11. Hash-Identifier"
+    echo "12. Pass the Hash Toolkit"
+    echo "13. Jack the Ripper"
+    echo "14. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
     case $choice in
-        1) custom_command "apt install -y seclists" ;;
+        1) custom_command "sudo apt install -y seclists" ;;
         2) custom_command "hashcat" ;;
         3) custom_command "john" ;;
         4) custom_command "hydra" ;;
@@ -423,10 +426,14 @@ cracking_menu() {
         8) custom_command "crunch" ;;
         9) custom_command "cewl" ;;
         10) custom_command "rarcrack" ;;
-        11) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 11." && sleep 2 ;;
+        11) custom_command "hash-identifier" ;;
+        12) custom_command "pth-toolkit" ;;
+        13) custom_command "johntheripper" ;;
+        14) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 14." && sleep 2 ;;
     esac
 }
+
 
 
 # Function to display and execute fun commands
