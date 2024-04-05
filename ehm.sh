@@ -173,9 +173,13 @@ enumeration_menu() {
     echo "6. wpscan --url --enumerate u"
     echo "7. wpscan --url --enumerate p"
     echo "8. amass enum -passive -d"
-    echo "9. amass enum -passive -d"
-    echo "10. searchsploit"
-    echo "11. Return to Main Menu"
+    echo "9. onesixtyone"
+    echo "10. snmp-check"
+    echo "11. dirb"
+    echo "12. dirsearch"
+    echo "13. ffuf"
+    echo "14. searchsploit"
+    echo "15. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -188,10 +192,14 @@ enumeration_menu() {
         6) custom_command "wpscan --url --enumerate u" ;;
         7) custom_command "wpscan --url --enumerate p" ;;
         8) custom_command "amass enum -passive -d" ;;
-        9) custom_command "amass enum -passive -d" ;;
-        10) custom_command "searchsploit" ;;
-        11) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 11." && sleep 2 ;;
+        9) custom_command "onesixtyone" ;;
+        10) custom_command "snmp-check" ;;
+        11) custom_command "dirb" ;;
+        12) custom_command "dirsearch" ;;
+        13) custom_command "ffuf" ;;
+        14) custom_command "searchsploit" ;;
+        15) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 15." && sleep 2 ;;
     esac
 }
 
@@ -246,7 +254,10 @@ exploitation_menu() {
     echo "2. git"
     echo "3. nc"
     echo "4. telnet"
-    echo "5. Return to Main Menu"
+    echo "5. exploitdb"
+    echo "6. searchsploit"
+    echo "7. <Include options for privilege escalation exploits>"
+    echo "8. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -255,10 +266,14 @@ exploitation_menu() {
         2) custom_command "git" ;;
         3) custom_command "nc" ;;
         4) custom_command "telnet" ;;
-        5) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 5." && sleep 2 ;;
+        5) custom_command "<exploitdb command>" ;;
+        6) custom_command "searchsploit" ;;
+        7) custom_command "<Privilege Escalation Exploit command>" ;;
+        8) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 8." && sleep 2 ;;
     esac
 }
+
 
 # Function to display and execute post-exploitation commands
 post_exploitation_menu() {
@@ -270,7 +285,9 @@ post_exploitation_menu() {
     echo "4. ssh -D"
     echo "5. ssh user@remote_host"
     echo "6. sudo chmod +s /bin/bash"
-    echo "7. Return to Main Menu"
+    echo "7. <Include more post-exploitation frameworks like Empire or Cobalt Strike>"
+    echo "8. <Include tools for data exfiltration, lateral movement, and persistence>"
+    echo "9. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -281,8 +298,10 @@ post_exploitation_menu() {
         4) custom_command "ssh -D" ;;
         5) custom_command "ssh user@remote_host" ;;
         6) custom_command "sudo chmod +s /bin/bash" ;;
-        7) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 7." && sleep 2 ;;
+        7) custom_command "<Post-Exploitation Framework command>" ;;
+        8) custom_command "<Data Exfiltration command>" ;;
+        9) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 9." && sleep 2 ;;
     esac
 }
 
@@ -309,7 +328,11 @@ miscellaneous_menu() {
     echo "17. Midnight Commander (mc)"
     echo "18. Vim (text editor)"
     echo "19. nano (text editor)"
-    echo "20. Return to Main Menu"
+    echo "20. aircrack-ng"
+    echo "21. reaver"
+    echo "22. setoolkit"
+    echo "23. gophish"
+    echo "24. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -333,10 +356,15 @@ miscellaneous_menu() {
         17) custom_command "mc" ;;
         18) custom_command "vim" ;;
         19) custom_command "nano" ;;
-        20) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 20." && sleep 2 ;;
+        20) custom_command "aircrack-ng" ;;
+        21) custom_command "reaver" ;;
+        22) custom_command "setoolkit" ;;
+        23) custom_command "gophish" ;;
+        24) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 24." && sleep 2 ;;
     esac
 }
+
 
 
 # Function to display and execute analysis commands
@@ -347,7 +375,9 @@ analysis_menu() {
     echo "2. tcpdump -e ip.src -e ip.dst -e frame.protocols -T fields -r"
     echo "3. tcpdump -r -q -z follow,tcp,ascii,0"
     echo "4. wpscan"
-    echo "5. Return to Main Menu"
+    echo "5. <Include more tools for log analysis like logstash, splunk, or graylog>"
+    echo "6. <Add options for memory forensics tools like Volatility>"
+    echo "7. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -356,26 +386,34 @@ analysis_menu() {
         2) custom_command "tcpdump -e ip.src -e ip.dst -e frame.protocols -T fields -r" ;;
         3) custom_command "tcpdump -r -q -z follow,tcp,ascii,0" ;;
         4) custom_command "wpscan" ;;
-        5) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 5." && sleep 2 ;;
+        5) custom_command "<Log Analysis tool command>" ;;
+        6) custom_command "<Memory Forensics tool command>" ;;
+        7) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 7." && sleep 2 ;;
     esac
 }
+
 
 # Function to display and execute cracking commands
 cracking_menu() {
     clear
     echo "### cracking Commands ###"
     echo "1. Install Seclists"
-    echo "2. Return to Main Menu"
+    echo "2. hashcat"
+    echo "3. John the Ripper"
+    echo "4. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
     case $choice in
         1) custom_command "sudo apt install -y seclists" ;;
-        2) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 2." && sleep 2 ;;
+        2) custom_command "hashcat" ;;
+        3) custom_command "john" ;;
+        4) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 4." && sleep 2 ;;
     esac
 }
+
 
 # Function to display and execute fun commands
 extra_menu() {
@@ -384,7 +422,10 @@ extra_menu() {
     echo "1. sl"
     echo "2. Ollama Dolphin-Mixtral"
     echo "3. Change Text Colour"
-    echo "4. Return to Main Menu"
+    echo "4. ifconfig"
+    echo "5. netstat"
+    echo "6. iptables"
+    echo "7. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -392,10 +433,14 @@ extra_menu() {
         1) custom_command "sl" ;;
         2) sudo apt install -y ollama && ollama run Dolphin-Mixtral ;;
         3) if [ -f custom_col.set ]; then rm custom_col.set; fi && set_custom_color ;;
-        4) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 3." && sleep 2 ;;
+        4) custom_command "ifconfig" ;;
+        5) custom_command "netstat" ;;
+        6) custom_command "iptables" ;;
+        7) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 7." && sleep 2 ;;
     esac
 }
+
 
 
 # Function to install netcat package on Raspbian OS
