@@ -427,7 +427,7 @@ cracking_menu() {
         9) custom_command "cewl" ;;
         10) custom_command "rarcrack" ;;
         11) custom_command "hash-identifier" ;;
-        12) custom_command "pth-toolkit" ;;
+        12) custom_command "pth-toolkit" ;;  # Added "Pass the Hash Toolkit"
         13) custom_command "johntheripper" ;;
         14) main_menu ;;
         *) echo "Invalid choice. Please enter a number between 1 and 14." && sleep 2 ;;
