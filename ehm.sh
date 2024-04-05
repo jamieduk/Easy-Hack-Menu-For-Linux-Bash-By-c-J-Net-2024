@@ -414,9 +414,11 @@ custom_command() {
         display_disclaimer
         return
     fi
-    echo "Disclaimer Accepted!"
+    #echo "Disclaimer Accepted!"
 
-    command=$1
+    # Extract the first word in the command for help lookup
+    command=$(echo "$1" | awk '{print $1}')
+
     # Verify permissions if sudo is required
     if [[ $command == *"sudo"* && $(id -u) -ne 0 ]]; then
         echo "Error: This command requires elevated privileges. Please run the script with sudo."
@@ -426,9 +428,9 @@ custom_command() {
     # Print help information for the selected program
     echo "Help information for $command:"
     # Try --help option first
-    if ! $command --help &>/dev/null; then
+    if ! $command --help ; then
         # If --help fails, try -help option
-        if ! $command -help &>/dev/null; then
+        if ! $command -help ; then
             echo "Error: Help information not available for $command."
             return
         fi
@@ -438,15 +440,14 @@ custom_command() {
     read -p "Enter Customization (e.g. -p port IP): " customization
 
     # Execute the customized command
-    echo "Executing command: $command $customization"
-    sudo $command $customization
+    echo "Executing command: $1 $customization"
+    sudo $1 $customization
 
     # Wait for user input before returning to the main menu
     read -p "Press Enter to continue..."
     #bash ehm.sh
     main_menu
 }
-
 
 # Main program
 main_menu
