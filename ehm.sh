@@ -18,7 +18,7 @@ set_custom_color() {
         )
 
 		# Print color options with color names and numbers
-		echo "Custom color file not found. Please select a color from the following list:"
+		echo "Custom color not set. Please select a color from the following list:"
 		index=1
 		for color_name in "${!color_map[@]}"; do
 			color_code="${color_map[$color_name]}"
@@ -60,20 +60,23 @@ set_custom_color() {
     fi
 }
 
-
-
 # Test Colour
-set_custom_color
+#set_custom_color
 
 #
 # Function to display the main menu
 main_menu() {
-custom_color=$(<custom_col.set)
-if [ -n "$custom_color" ]; then
-    colour=$custom_color
-else
-    colour="\033[1;32m"
-fi
+	custom_color=""
+	if [ -f "custom_col.set" ]; then
+		custom_color=$(<custom_col.set)
+		if [ -n "$custom_color" ]; then
+			colour=$custom_color
+	else
+		colour="\033[1;32m"
+	fi
+	else
+		colour="\033[1;32m"
+	fi
 
 echo -e "${colour}Easy Hack Menu For Linux Bash By (c) J~Net 2024"
 
@@ -353,7 +356,7 @@ extra_menu() {
     case $choice in
         1) custom_command "sl" ;;
         2) sudo apt install -y ollama && ollama run Dolphin-Mixtral ;;
-        3) rm custom_col.set && set_custom_color ;;
+        3) if [ -f custom_col.set ]; then rm custom_col.set; fi && set_custom_color ;;
         4) main_menu ;;
         *) echo "Invalid choice. Please enter a number between 1 and 3." && sleep 2 ;;
     esac
