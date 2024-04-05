@@ -439,7 +439,7 @@ cracking_menu() {
 # Function to display and execute fun commands
 extra_menu() {
     clear
-    echo "### Fun Commands ###"
+    echo "### Extra Commands ###"
     echo "1. sl"
     echo "2. Ollama Dolphin-Mixtral"
     echo "3. Change Text Colour"
