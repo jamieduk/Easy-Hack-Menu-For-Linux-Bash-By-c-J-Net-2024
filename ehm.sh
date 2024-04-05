@@ -196,8 +196,52 @@ enumeration_menu() {
 }
 
 
+# Function to check if disclaimer has been accepted
+check_disclaimer() {
+    if [ -f "disclaimer_accepted" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Function to self-destruct script and scrub if disclaimer is rejected
+self_destruct() {
+    echo "Disclaimer rejected. Self-destructing script..."
+    # Insert your scrubbing command here to securely delete sensitive data
+    # Example: shred -u -z -n 10 sensitive_file
+    # Note: Be extremely careful with the command you use to avoid unintended consequences
+    rm -rf "$0"
+    exit 1
+}
+
+# Display disclaimer and prompt for acceptance
+display_disclaimer() {
+    echo "====================================================="
+    echo "                 CYBER SECURITY DISCLAIMER           "
+    echo "====================================================="
+    echo "WARNING: This script is intended for ethical hacking,"
+    echo "penetration testing, and white-hat security purposes"
+    echo "only. Any unauthorized use is strictly prohibited."
+    echo ""
+    read -p "Do you accept the terms of the disclaimer? (y/n): " choice
+    case "$choice" in
+        [yY]|[yY][eE][sS])
+            touch disclaimer_accepted
+            ;;
+        *)
+            self_destruct
+            ;;
+    esac
+}
+
 # Function to execute a custom command after customization
-custom_command() {
+	custom_command() {
+	if ! check_disclaimer; then
+		    display_disclaimer
+    fi
+    echo "Disclaimer accepted. Proceeding with the script..."
+
     command=$1
 
     # Print help information for the selected program
@@ -369,6 +413,3 @@ extra_menu() {
 
 # Main program
 main_menu
-
-
-
