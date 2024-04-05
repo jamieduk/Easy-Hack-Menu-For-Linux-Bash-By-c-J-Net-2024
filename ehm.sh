@@ -68,47 +68,49 @@ set_custom_color() {
 #
 # Function to display the main menu
 main_menu() {
-	custom_color=""
-	if [ -f "custom_col.set" ]; then
-		custom_color=$(<custom_col.set)
-		if [ -n "$custom_color" ]; then
-			colour=$custom_color
-	else
-		colour="\033[1;32m"
-	fi
-	else
-		colour="\033[1;32m"
-	fi
+    while true; do
+        custom_color=""
+        if [ -f "custom_col.set" ]; then
+            custom_color=$(<custom_col.set)
+            if [ -n "$custom_color" ]; then
+                colour=$custom_color
+            else
+                colour="\033[1;32m"
+            fi
+        else
+            colour="\033[1;32m"
+        fi
 
-echo -e "${colour}Easy Hack Menu For Linux Bash By (c) J~Net 2024"
+        echo -e "${colour}Easy Hack Menu For Linux Bash By (c) J~Net 2024"
+        echo ""
+        echo "### Main Menu ###"
+        echo "1. Reconnaissance Commands"
+        echo "2. Enumeration Commands"
+        echo "3. Exploitation Commands"
+        echo "4. Post-Exploitation Commands"
+        echo "5. Miscellaneous Commands"
+        echo "6. Analysis Commands"
+        echo "7. Cracking Commands"
+        echo "8. Extra Commands & Settings"
+        echo "9. Exit"
+        echo "------------------"
+        read -p "Enter your choice: " choice
 
-    echo ""
-    echo "### Main Menu ###"
-    echo "1. Reconnaissance Commands"
-    echo "2. Enumeration Commands"
-    echo "3. Exploitation Commands"
-    echo "4. Post-Exploitation Commands"
-    echo "5. Miscellaneous Commands"
-    echo "6. Analysis Commands"
-    echo "7. Cracking Commands"
-    echo "8. Extra Commands & Settings"
-    echo "9. Exit"
-    echo "------------------"
-    read -p "Enter your choice: " choice
-
-    case $choice in
-        1) reconnaissance_menu ;;
-        2) enumeration_menu ;;
-        3) exploitation_menu ;;
-        4) post_exploitation_menu ;;
-        5) miscellaneous_menu ;;
-        6) analysis_menu ;;
-        7) cracking_menu ;;
-        8) extra_menu ;;
-        9) exit ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 9." && sleep 2 ;;
-    esac
+        case $choice in
+            1) reconnaissance_menu ;;
+            2) enumeration_menu ;;
+            3) exploitation_menu ;;
+            4) post_exploitation_menu ;;
+            5) miscellaneous_menu ;;
+            6) analysis_menu ;;
+            7) cracking_menu ;;
+            8) extra_menu ;;
+            9) exit ;;
+            *) echo "Invalid choice. Please enter a number between 1 and 9." ;;
+        esac
+    done
 }
+
 
 # Function to display and execute reconnaissance commands
 reconnaissance_menu() {
