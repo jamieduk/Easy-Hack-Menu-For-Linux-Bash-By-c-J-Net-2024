@@ -244,8 +244,8 @@ exploitation_menu() {
     echo "### Exploitation Commands ###"
     echo "1. ssh"
     echo "2. git"
-    echo "3. nc reverse shell"
-    echo "4. nc simple chat server"
+    echo "3. nc"
+    echo "4. telnet"
     echo "5. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
