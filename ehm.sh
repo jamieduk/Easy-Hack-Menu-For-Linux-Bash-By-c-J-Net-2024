@@ -237,9 +237,10 @@ display_disclaimer() {
 }
 
 # Function to execute a custom command after customization
-	custom_command() {
-	if ! check_disclaimer; then
-		    display_disclaimer
+custom_command() {
+    if ! check_disclaimer; then
+        display_disclaimer
+        return
     fi
     echo "Disclaimer Accepted!"
 
@@ -252,7 +253,14 @@ display_disclaimer() {
 
     # Print help information for the selected program
     echo "Help information for $command:"
-    $command --help
+    # Try --help option first
+    if ! $command --help &>/dev/null; then
+        # If --help fails, try -help option
+        if ! $command -help &>/dev/null; then
+            echo "Error: Help information not available for $command."
+            return
+        fi
+    fi
 
     # Prompt for customization
     read -p "Enter Customization (e.g. -p port IP): " customization
@@ -416,18 +424,25 @@ extra_menu() {
     esac
 }
 
+
 # Function to install netcat package on Raspbian OS
 install_netcat() {
-    echo "netcat (nc) not found. Attempting to install it..."
-    if sudo apt update -y && sudo apt install -y netcat-openbsd; then
-        echo "netcat (nc) installed successfully."
-    elif sudo apt update -y && sudo apt install -y netcat-traditional; then
-        echo "netcat (nc) installed successfully."
+    echo "Checking if netcat (nc) is installed..."
+    if [ -x "$(command -v nc)" ]; then
+        echo "netcat (nc) is already installed."
     else
-        echo "Error: Failed to install netcat (nc)."
-        # Handle specific error cases here, if needed
+        echo "netcat (nc) not found. Attempting to install it..."
+        if sudo apt update -y && sudo apt install -y netcat-openbsd; then
+            echo "netcat (nc) installed successfully."
+        elif sudo apt update -y && sudo apt install -y netcat-traditional; then
+            echo "netcat (nc) installed successfully."
+        else
+            echo "Error: Failed to install netcat (nc)."
+            # Handle specific error cases here, if needed
+        fi
     fi
 }
+
 # Install nc
 install_netcat
 # Main program
