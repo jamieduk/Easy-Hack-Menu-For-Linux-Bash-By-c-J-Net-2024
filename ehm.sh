@@ -327,7 +327,7 @@ analysis_menu() {
 cracking_menu() {
     clear
     echo "### cracking Commands ###"
-    echo "1. sudo apt install seclists"
+    echo "1. Install Seclists"
     echo "2. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
