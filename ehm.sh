@@ -236,44 +236,6 @@ display_disclaimer() {
     esac
 }
 
-# Function to execute a custom command after customization
-custom_command() {
-    if ! check_disclaimer; then
-        display_disclaimer
-        return
-    fi
-    echo "Disclaimer Accepted!"
-
-    command=$1
-    # Verify permissions if sudo is required
-    if [[ $command == *"sudo"* && $(id -u) -ne 0 ]]; then
-        echo "Error: This command requires elevated privileges. Please run the script with sudo."
-        return
-    fi
-
-    # Print help information for the selected program
-    echo "Help information for $command:"
-    # Try --help option first
-    if ! $command --help &>/dev/null; then
-        # If --help fails, try -help option
-        if ! $command -help &>/dev/null; then
-            echo "Error: Help information not available for $command."
-            return
-        fi
-    fi
-
-    # Prompt for customization
-    read -p "Enter Customization (e.g. -p port IP): " customization
-
-    # Execute the customized command
-    echo "Executing command: $command $customization"
-    sudo $command $customization
-
-    # Wait for user input before returning to the main menu
-    read -p "Press Enter to continue..."
-    #bash ehm.sh
-    main_menu
-}
 
 
 # Function to display and execute exploitation commands
@@ -291,8 +253,8 @@ exploitation_menu() {
     case $choice in
         1) custom_command "ssh" ;;
         2) custom_command "git" ;;
-        3) custom_command "nc reverse shell" ;;
-        4) custom_command "nc simple chat server" ;;
+        3) custom_command "nc" ;;
+        4) custom_command "telnet" ;;
         5) main_menu ;;
         *) echo "Invalid choice. Please enter a number between 1 and 5." && sleep 2 ;;
     esac
@@ -445,6 +407,47 @@ install_netcat() {
 
 # Install nc
 install_netcat
+
+# Function to execute a custom command after customization
+custom_command() {
+    if ! check_disclaimer; then
+        display_disclaimer
+        return
+    fi
+    echo "Disclaimer Accepted!"
+
+    command=$1
+    # Verify permissions if sudo is required
+    if [[ $command == *"sudo"* && $(id -u) -ne 0 ]]; then
+        echo "Error: This command requires elevated privileges. Please run the script with sudo."
+        return
+    fi
+
+    # Print help information for the selected program
+    echo "Help information for $command:"
+    # Try --help option first
+    if ! $command --help &>/dev/null; then
+        # If --help fails, try -help option
+        if ! $command -help &>/dev/null; then
+            echo "Error: Help information not available for $command."
+            return
+        fi
+    fi
+
+    # Prompt for customization
+    read -p "Enter Customization (e.g. -p port IP): " customization
+
+    # Execute the customized command
+    echo "Executing command: $command $customization"
+    sudo $command $customization
+
+    # Wait for user input before returning to the main menu
+    read -p "Press Enter to continue..."
+    #bash ehm.sh
+    main_menu
+}
+
+
 # Main program
 main_menu
 
