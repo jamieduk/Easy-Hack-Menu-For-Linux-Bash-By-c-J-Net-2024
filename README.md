@@ -1,6 +1,3 @@
-Easy Hack Menu For Linux Bash By (c) J~Net 2024
-
-
 # Easy Hack Menu For Linux Bash
 
 Easy Hack Menu For Linux Bash is a customizable menu-driven script that provides a collection of commonly used hacking commands for penetration testing, ethical hacking, and security assessments.
@@ -24,28 +21,24 @@ Easy Hack Menu For Linux Bash is a customizable menu-driven script that provides
 2. Make the script executable:
    ```bash
    sudo chmod +x ehm.sh
-
 Run the script:
-
+bash
+Copy code
 ./ehm.sh
-
-
-
-### Main Menu ###
-1. Reconnaissance Commands
-2. Enumeration Commands
-3. Exploitation Commands
-4. Post-Exploitation Commands
-5. Miscellaneous Commands
-6. Analysis Commands
-7. Cleanup Commands
-8. Extra Commands & Settings
-9. Exit
-------------------
-Enter your choice: 
-
+Main Menu
+Reconnaissance Commands
+Enumeration Commands
+Exploitation Commands
+Post-Exploitation Commands
+Miscellaneous Commands
+Analysis Commands
+Cleanup Commands
+Fun Commands
+Exit
+Enter your choice:
 
 Choose an option from the main menu and follow the prompts to customize and execute commands.
+
 Menu Options
 Reconnaissance Commands: Commands for gathering information about targets.
 Enumeration Commands: Commands for enumerating services, users, etc.
@@ -69,3 +62,6 @@ Created by J~Net
 
 (c) 2024 J~Net
 
+
+
+This README provides a comprehensive overview of the script's features, usage instructions, customization options, and information about contributions and licensing.
