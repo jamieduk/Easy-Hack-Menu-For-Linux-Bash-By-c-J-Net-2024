@@ -39,7 +39,7 @@ Run the script:
 5. Miscellaneous Commands
 6. Analysis Commands
 7. Cleanup Commands
-8. Fun Commands
+8. Extra Commands & Settings
 9. Exit
 ------------------
 Enter your choice: 
