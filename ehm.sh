@@ -304,7 +304,12 @@ miscellaneous_menu() {
     echo "12. timeout"
     echo "13. grep"
     echo "14. alias"
-    echo "15. Return to Main Menu"
+    echo "15. hexedit"
+    echo "16. Bless (hex editor)"
+    echo "17. Midnight Commander (mc)"
+    echo "18. Vim (text editor)"
+    echo "19. nano (text editor)"
+    echo "20. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -323,10 +328,16 @@ miscellaneous_menu() {
         12) custom_command "timeout" ;;
         13) custom_command "grep" ;;
         14) custom_command "alias" ;;
-        15) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 15." && sleep 2 ;;
+        15) custom_command "hexedit" ;;
+        16) custom_command "bless" ;;
+        17) custom_command "mc" ;;
+        18) custom_command "vim" ;;
+        19) custom_command "nano" ;;
+        20) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 20." && sleep 2 ;;
     esac
 }
+
 
 # Function to display and execute analysis commands
 analysis_menu() {
