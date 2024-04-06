@@ -236,7 +236,7 @@ display_disclaimer() {
     read -p "Do you accept the terms of use? (y/n): " choice
     case "$choice" in
         [yY]|[yY][eE][sS])
-            echo "$(date +'%d/%m/%Y') $USER Accepted Disclaimer For Using Easy Hack Menu Made By J~Net (c)2024 And Is Now Authorised To Use For Ethical Use! " > disclaimer_accepted
+            echo "$(date +'%d/%m/%Y') $USER Accepted Disclaimer For Using Easy Hack Menu Made By J~Net (c)2024 And Is Now Authorised For Ethical Use! " > disclaimer_accepted
             ;;
         *)
             self_destruct
