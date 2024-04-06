@@ -493,7 +493,6 @@ install_netcat() {
 # Install nc
 install_netcat
 
-# Function to execute a custom command after customization
 custom_command() {
     if ! check_disclaimer; then
         display_disclaimer
@@ -510,13 +509,26 @@ custom_command() {
         return
     fi
 
+    # Check if the command is installed
+    if ! command -v "$command" &>/dev/null; then
+        # Prompt the user to install the missing command
+        read -p "$command is not installed. Do you want to install it? (y/n): " install_choice
+        if [[ $install_choice == "y" || $install_choice == "Y" ]]; then
+            sudo apt install -y "$command"
+            echo "$command installed successfully!"
+        else
+            echo "$command is required for this command. Aborting."
+            return
+        fi
+    fi
+
     # Print help information for the selected program
     echo "Help information for $command:"
     # Try --help option first
     if ! $command --help ; then
         # If --help fails, try -help option
         if ! $command -help ; then
-            echo "Error: Help information not available for $command."
+            echo "Error: Help information not available for $command"
             return
         fi
     fi
