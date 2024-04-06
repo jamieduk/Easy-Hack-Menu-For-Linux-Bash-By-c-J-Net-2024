@@ -236,7 +236,7 @@ display_disclaimer() {
     read -p "Do you accept the terms of use? (y/n): " choice
     case "$choice" in
         [yY]|[yY][eE][sS])
-            touch disclaimer_accepted
+            echo "$(date +'%d/%m/%Y') $USER Accepted Disclaimer" > disclaimer_accepted
             ;;
         *)
             self_destruct
