@@ -4,6 +4,17 @@
 #
 # ./ehm.sh
 #
+# Optional fr you to get
+#https://github.com/trustedsec/social-engineer-toolkit
+#https://github.com/topics/wpscan
+#https://github.com/owasp-amass/amass
+#https://github.com/galkan/crowbar
+#https://github.com/blackploit/hash-identifier
+#https://blog.didierstevens.com/category/forensics/
+#https://github.com/gophish/gophish
+#https://github.com/inAudible-NG/RainbowCrack-NG.git
+#https://github.com/net-snmp/net-snmp
+
 
 # List of packages to install
 packages=(
