@@ -4,6 +4,62 @@
 #
 # ./ehm.sh
 #
+
+# List of packages to install
+packages=(
+    "netcat-openbsd"
+    "hping3"
+    "nmap"
+    "whatweb"
+    "dirb"
+    "dirsearch"
+    "ffuf"
+    "hashcat"
+    "john"
+    "hydra"
+    "medusa"
+    "crunch"
+    "cewl"
+    "rarcrack"
+    "sl"
+    "iftop"
+    "ptunnel"
+    "tcpdump"
+    "curl"
+    "nikto"
+    "wget"
+    "gobuster"
+    "tshark"
+    "tmux"
+    "grep"
+    "hexedit"
+    "bless"
+    "mc"
+    "vim"
+    "nano"
+    "aircrack-ng"
+    "reaver"
+)
+
+# Function to check if a package is installed
+package_installed() {
+    dpkg -l "$1" &> /dev/null
+}
+
+# Function to install a package if not already installed
+install_package() {
+    if ! package_installed "$1"; then
+        sudo apt update -y
+        sudo apt install -y "$1"
+    fi
+}
+
+# Loop through each package and install if necessary
+for package in "${packages[@]}"; do
+    install_package "$package"
+done
+
+
 set_custom_color() {
 	clear
     # Check if custom_col.set exists
