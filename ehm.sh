@@ -443,7 +443,7 @@ analysis_menu() {
     echo "3. tcpdump -r -q -z follow,tcp,ascii,0"
     echo "4. wpscan"
     echo "5. <Include more tools for log analysis like logstash, splunk, or graylog>"
-    echo "6. Volatility Memory Forensics tool"
+    echo "6. Install Volatility Memory Forensics tool"
     echo "7. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
