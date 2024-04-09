@@ -443,7 +443,7 @@ analysis_menu() {
     echo "3. tcpdump -r -q -z follow,tcp,ascii,0"
     echo "4. wpscan"
     echo "5. <Include more tools for log analysis like logstash, splunk, or graylog>"
-    echo "6. <Add options for memory forensics tools like Volatility>"
+    echo "6. Volatility Memory Forensics tool"
     echo "7. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
@@ -454,7 +454,7 @@ analysis_menu() {
         3) custom_command "tcpdump -r -q -z follow,tcp,ascii,0" ;;
         4) custom_command "wpscan" ;;
         5) custom_command "<Log Analysis tool command>" ;;
-        6) custom_command "<Memory Forensics tool command>" ;;
+        6) install_volatility ;;
         7) main_menu ;;
         *) echo "Invalid choice. Please enter a number between 1 and 7." && sleep 2 ;;
     esac
@@ -537,6 +537,24 @@ extra_menu() {
     esac
 }
 
+
+install_volatility() {
+    # Clone the Volatility repository
+    git clone https://github.com/volatilityfoundation/volatility.git
+    # Move into the Volatility directory
+    cd volatility || exit
+    # Install Volatility
+    sudo python setup.py install
+    # Check if Volatility is installed
+    if command -v python &>/dev/null && python vol.py -h &>/dev/null; then
+        echo "Volatility installation successful!"
+    else
+        echo "Volatility installation failed."
+    fi
+}
+
+# Call the function to install Volatility
+#install_volatility
 
 
 # Function to install netcat package on Raspbian OS
