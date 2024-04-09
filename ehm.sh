@@ -133,7 +133,6 @@ set_custom_color() {
 #set_custom_color
 
 #
-# Function to display the main menu
 main_menu() {
     while true; do
         custom_color=""
@@ -159,7 +158,8 @@ main_menu() {
         echo "6. Analysis Commands"
         echo "7. Cracking Commands"
         echo "8. Extra Commands & Settings"
-        echo "9. Exit"
+        echo "9. Launch Metasploit Console"
+        echo "10. Exit"
         echo "------------------"
         read -p "Enter your choice: " choice
 
@@ -172,11 +172,13 @@ main_menu() {
             6) analysis_menu ;;
             7) cracking_menu ;;
             8) extra_menu ;;
-            9) exit ;;
-            *) echo "Invalid choice. Please enter a number between 1 and 9." ;;
+            9) msfconsole ;;
+            10) exit ;;
+            *) echo "Invalid choice. Please enter a number between 1 and 10." ;;
         esac
     done
 }
+
 
 
 # Function to display and execute reconnaissance commands
