@@ -508,7 +508,7 @@ extra_menu() {
     clear
     echo "### Extra Commands ###"
     echo "1. sl"
-    echo "2. Ollama Dolphin-Mixtral"
+    echo "2. Ollama Dolphin-Mistral"
     echo "3. Change Text Colour"
     echo "4. ifconfig"
     echo "5. netstat"
@@ -523,7 +523,7 @@ extra_menu() {
 
     case $choice in
         1) custom_command "sl" ;;
-        2) sudo apt install -y ollama && ollama run Dolphin-Mixtral ;;
+        2) sudo apt install -y ollama && ollama run Dolphin-Mistral ;;
         3) if [ -f custom_col.set ]; then rm custom_col.set; fi && set_custom_color ;;
         4) custom_command "ifconfig" ;;
         5) custom_command "netstat" ;;
