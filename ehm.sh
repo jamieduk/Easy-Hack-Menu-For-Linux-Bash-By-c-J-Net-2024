@@ -506,6 +506,14 @@ cracking_menu() {
 
 
 # Function to display and execute fun commands
+check_install_xfreerdp() {
+    if ! command -v xfreerdp &>/dev/null; then
+        echo "Installing xfreerdp..."
+        sudo apt install -y freerdp2-x11
+    fi
+}
+
+# Function to display the extra menu
 extra_menu() {
     clear
     echo "### Extra Commands ###"
@@ -519,7 +527,8 @@ extra_menu() {
     echo "8. htop"
     echo "9. nload"
     echo "10. iftop"
-    echo "11. Return to Main Menu"
+    echo "11. xfreerdp (Remote Desktop Connection)"
+    echo "12. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -534,8 +543,9 @@ extra_menu() {
         8) custom_command "htop" ;;
         9) custom_command "nload" ;;
         10) custom_command "iftop" ;;
-        11) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 11." && sleep 2 ;;
+        11) check_install_xfreerdp && custom_command xfreerdp ;;
+        12) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 12." && sleep 2 ;;
     esac
 }
 
