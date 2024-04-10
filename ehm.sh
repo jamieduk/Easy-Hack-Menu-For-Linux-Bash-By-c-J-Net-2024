@@ -50,6 +50,7 @@ packages=(
     "nano"
     "aircrack-ng"
     "reaver"
+    "socat"
 )
 
 # Function to check if a package is installed
