@@ -182,51 +182,52 @@ main_menu() {
 
 
 
-# Function to display and execute reconnaissance commands
 reconnaissance_menu() {
     clear
     echo "### Reconnaissance Commands ###"
-    echo "1. hping3 -S -V --flood"
-    echo "2. hping3 --traceroute -S -V -p 80"
-    echo "3. ping"
-    echo "4. nmap -sL"
-    echo "5. nmap --script vuln"
-    echo "6. ping -s"
-    echo "7. nmap --script malware"
-    echo "8. ping -s -f"
-    echo "9. nmap -A"
-    echo "10. nmap -f"
-    echo "11. nmap --source-port"
-    echo "12. hping3 --traceroute -V -1"
-    echo "13. nmap -D RND:10"
-    echo "14. masscan -p0-65535"
-    echo "15. masscan -p80,443"
-    echo "16. masscan -p23"
-    echo "17. tcpdump -i any icmp"
-    echo "18. Return to Main Menu"
+    echo "1. nmap -p- 192.168.1.0/24"
+    echo "2. nmap -sL"
+    echo "3. nmap --script vuln"
+    echo "4. nmap --script malware"
+    echo "5. nmap -A"
+    echo "6. nmap -f"
+    echo "7. nmap --source-port"
+    echo "8. nmap -D RND:10"
+    echo "9. hping3 -S -V --flood"
+    echo "10. hping3 --traceroute -S -V -p 80"
+    echo "11. hping3 --traceroute -V -1"
+    echo "12. ping"
+    echo "13. ping -s"
+    echo "14. ping -s -f"
+    echo "15. masscan -p0-65535"
+    echo "16. masscan -p80,443"
+    echo "17. masscan -p23"
+    echo "18. tcpdump -i any icmp"
+    echo "19. Return to Main Menu"
     echo "------------------"
     read -p "Enter your choice: " choice
 
     case $choice in
-        1) custom_command "hping3 -S -V --flood" ;;
-        2) custom_command "hping3 --traceroute -S -V -p 80" ;;
-        3) custom_command "ping" ;;
-        4) custom_command "nmap -sL" ;;
-        5) custom_command "nmap --script vuln" ;;
-        6) custom_command "ping -s" ;;
-        7) custom_command "nmap --script malware" ;;
-        8) custom_command "ping -s -f" ;;
-        9) custom_command "nmap -A" ;;
-        10) custom_command "nmap -f" ;;
-        11) custom_command "nmap --source-port" ;;
-        12) custom_command "hping3 --traceroute -V -1" ;;
-        13) custom_command "nmap -D RND:10" ;;
-        14) custom_command "masscan -p0-65535" ;;
-        15) custom_command "masscan -p80,443" ;;
-        16) custom_command "masscan -p23" ;;
-        17) custom_command "tcpdump -i any icmp" ;;
-        18) main_menu ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 18." && sleep 2 ;;
+        1) custom_command "nmap -p- 192.168.1.0/24" ;;
+        2) custom_command "nmap -sL" ;;
+        3) custom_command "nmap --script vuln" ;;
+        4) custom_command "nmap --script malware" ;;
+        5) custom_command "nmap -A" ;;
+        6) custom_command "nmap -f" ;;
+        7) custom_command "nmap --source-port" ;;
+        8) custom_command "nmap -D RND:10" ;;
+        9) custom_command "hping3 -S -V --flood" ;;
+        10) custom_command "hping3 --traceroute -S -V -p 80" ;;
+        11) custom_command "hping3 --traceroute -V -1" ;;
+        12) custom_command "ping" ;;
+        13) custom_command "ping -s" ;;
+        14) custom_command "ping -s -f" ;;
+        15) custom_command "masscan -p0-65535" ;;
+        16) custom_command "masscan -p80,443" ;;
+        17) custom_command "masscan -p23" ;;
+        18) custom_command "tcpdump -i any icmp" ;;
+        19) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 19." && sleep 2 ;;
     esac
 }
 
@@ -646,5 +647,6 @@ custom_command() {
 
 # Main program
 main_menu
+
 
 
