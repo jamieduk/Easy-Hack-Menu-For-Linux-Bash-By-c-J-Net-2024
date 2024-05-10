@@ -185,7 +185,7 @@ main_menu() {
 reconnaissance_menu() {
     clear
     echo "### Reconnaissance Commands ###"
-    echo "1. nmap -p- 192.168.1.0/24"
+    echo "1. nmap 192.168.1.0/24"
     echo "2. nmap -sL"
     echo "3. nmap --script vuln"
     echo "4. nmap --script malware"
