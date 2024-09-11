@@ -1,30 +1,71 @@
-Cyber-Menu By J~Net 2024
-Overview
-Cyber-Menu is a Pentest Automation Framework designed to assist in various penetration testing tasks. This Python script provides a menu-driven interface to execute common security testing tools and techniques.
+# Easy Hack Menu For Linux Bash
 
-Prerequisites
-Ensure you have Python 3.x installed on your system. The script also requires certain tools to be installed on your machine.
+Easy Hack Menu For Linux Bash is a customizable menu-driven script that provides a collection of commonly used hacking commands for penetration testing, ethical hacking, and security assessments.
 
-Installation
-To install the necessary tools for this script, run the following command:
+## Features (All inspired by https://youtu.be/gL4j-a-g9pA?si=PKFm9RXMKL5NIVOr)
 
-python run.py
+- Menu-driven interface for easy navigation.
+- Categorization of commands for different stages of hacking.
+- Customizable commands with options to set parameters such as IP addresses, ports, etc.
+- Execute commands directly from the menu.
+- Fun commands for entertainment purposes.
+
+## Requirements
+
+- Linux environment
+- Bash shell
+
+## Usage
+
+1. Clone or download the `ehm.sh` script.
+2. Make the script executable:
+   ```bash
+   sudo chmod +x ehm.sh
+Run the script:
+bash
+Copy code
+./ehm.sh
+Main Menu
+Reconnaissance Commands
+Enumeration Commands
+Exploitation Commands
+Post-Exploitation Commands
+Miscellaneous Commands
+Analysis Commands
+Cleanup Commands
+Fun Commands
+Exit
+Enter your choice:
+
+Choose an option from the main menu and follow the prompts to customize and execute commands.
+
+Menu Options
+Reconnaissance Commands: Commands for gathering information about targets.
+Enumeration Commands: Commands for enumerating services, users, etc.
+Exploitation Commands: Commands for exploiting vulnerabilities.
+Post-Exploitation Commands: Commands for actions after gaining access.
+Miscellaneous Commands: Other useful commands for various tasks.
+Analysis Commands: Commands for analyzing captured data.
+Cleanup Commands: Commands for installing or cleaning up tools.
+Fun Commands: Humorous or entertaining commands.
+Customization
+You can customize commands by editing the script directly. Look for the functions corresponding to each menu option and modify the command strings as needed.
+
+Contributions
+Contributions and feedback are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
+
+License
+This script is released under the MIT License.
+
+Author
+Created by J~Net
+
+(c) 2024 J~Net
 
 
-python run.py 
-Cyber-Menu By J~Net 2024
 
-Agreement already recorded. Proceeding...
-Pentest Automation Framework
-1. Install Tools
-2. Recon (Nmap Scan)
-3. SQL Injection Test (sqlmap)
-4. SSH Brute Force (Hydra)
-5. MySQL Brute Force (Hydra)
-6. Privilege Escalation
-7. Exit
+This README provides a comprehensive overview of the script's features, usage instructions, customization options, and information about contributions and licensing.
 
 
-Also Check out https://github.com/jamieduk/Easy-Hack-Menu-For-Linux-Bash-By-c-J-Net-2024
-
-
+Also Check out
+https://github.com/jamieduk/Cyber-Menu
