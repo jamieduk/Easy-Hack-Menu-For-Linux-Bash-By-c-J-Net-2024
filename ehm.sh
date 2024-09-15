@@ -104,47 +104,45 @@ set_custom_color() {
     fi
 }
 
-#!/bin/bash
-
 # File where agreement status will be saved
 AGREEMENT_FILE="user_agreement_accepted.txt"
 
 # Function to display the user agreement
 display_agreement() {
-    clear
-    echo "### User Agreement ###"
-    echo "Please read the following agreement carefully."
-    echo ""
-    echo "By using this script, you agree to the following terms:"
-    echo "1. You will use this script responsibly and ethically."
-    echo "2. You acknowledge that this script is provided as-is without any warranty."
-    echo "3. You agree to follow all applicable laws when using this script."
-    echo ""
-    echo "Do you accept the agreement? (yes/no)"
+    if [ -f "agreement.log" ]; then
+        return  # Exit the function if the file exists
+    else
+        clear
+        echo "### User Agreement ###"
+        echo "Please read the following agreement carefully."
+        echo ""
+        echo "By using this script, you agree to the following terms:"
+        
+        # ANSI color codes for green and reset (no color)
+        GREEN='\033[0;32m'
+        NC='\033[0m' # No color (reset)
+
+        # Display the user agreement in green
+        echo -e "${GREEN}1. You will use this script responsibly and ethically."
+        echo -e "2. You acknowledge that this script is provided as-is without any warranty."
+        echo -e "3. You agree to follow all applicable laws when using this script."
+        echo -e "4. The authors of this script are not responsible for any misuse.${NC}"
+        echo ""
+
+        # Ask the user if they agree to the terms
+        read -p "Do you accept the agreement? (yes/no): " AGREEMENT
+
+        if [[ "$AGREEMENT" != "yes" ]]; then
+            echo "You did not agree to the terms. Exiting."
+            exit 1  # Exit if the user does not agree
+        else
+            echo "Thank you for agreeing to the terms."
+            # Save agreement to a file
+            echo "User agreed to the terms on $(date)" > agreement.log
+        fi
+    fi
 }
 
-# Check if the agreement has already been accepted
-# ANSI color code for green
-GREEN='\033[0;32m'
-NC='\033[0m' # No color (reset)
-
-# User agreement
-echo -e "${GREEN}1. You will use this script responsibly and ethically."
-echo -e "2. You understand that any misuse of this script may lead to consequences."
-echo -e "3. You agree to comply with all applicable laws and regulations."
-echo -e "4. The authors of this script are not responsible for any misuse.${NC}"
-
-# Example of reading user agreement acceptance
-read -p "Do you agree to these terms? (yes/no): " AGREEMENT
-
-if [[ "$AGREEMENT" != "yes" ]]; then
-    echo "You did not agree to the terms. Exiting."
-    exit 1
-else
-    echo "Thank you for agreeing to the terms."
-    # Save agreement to a file
-    echo "User agreed to the terms on $(date)" > agreement.log
-fi
 
 # Function to display custom command
 custom_command() {
@@ -153,6 +151,43 @@ custom_command() {
     eval "$1"
     read -p "Press Enter to continue..."
 }
+
+# Function to display the extra menu
+extra_menu() {
+    clear
+    echo "### Extra Commands ###"
+    echo "1. sl"
+    echo "2. Ollama Dolphin-Mistral"
+    echo "3. Change Text Colour"
+    echo "4. ifconfig"
+    echo "5. netstat"
+    echo "6. iptables"
+    echo "7. top"
+    echo "8. htop"
+    echo "9. nload"
+    echo "10. iftop"
+    echo "11. xfreerdp (Remote Desktop Connection)"
+    echo "12. Return to Main Menu"
+    echo "------------------"
+    read -p "Enter your choice: " choice
+
+    case $choice in
+        1) custom_command "sl" ;;
+        2) sudo apt install -y ollama && ollama run Dolphin-Mistral ;;
+        3) if [ -f custom_col.set ]; then rm custom_col.set; fi && set_custom_color ;;
+        4) custom_command "ifconfig" ;;
+        5) custom_command "netstat" ;;
+        6) custom_command "iptables" ;;
+        7) custom_command "top" ;;
+        8) custom_command "htop" ;;
+        9) custom_command "nload" ;;
+        10) custom_command "iftop" ;;
+        11) check_install_xfreerdp && custom_command xfreerdp ;;
+        12) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 12." && sleep 2 ;;
+    esac
+}
+
 
 # Reconnaissance menu
 reconnaissance_menu() {
