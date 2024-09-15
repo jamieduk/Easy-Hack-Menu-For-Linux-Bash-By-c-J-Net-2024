@@ -17,6 +17,9 @@
 # List of packages to install
 packages=(
     "netcat-openbsd"
+    "freerdp2-x11"
+    "remmina"
+    "krdc"
     "hping3"
     "nmap"
     "sqlmap"
