@@ -498,6 +498,146 @@ main_menu() {
     done
 }
 
+
+
+# Function to display and execute fun commands
+check_install_xfreerdp() {
+    if ! command -v xfreerdp &>/dev/null; then
+        echo "Installing xfreerdp..."
+        sudo apt install -y freerdp2-x11
+    fi
+}
+
+# Function to display the extra menu
+extra_menu() {
+    clear
+    echo "### Extra Commands ###"
+    echo "1. sl"
+    echo "2. Ollama Dolphin-Mistral"
+    echo "3. Change Text Colour"
+    echo "4. ifconfig"
+    echo "5. netstat"
+    echo "6. iptables"
+    echo "7. top"
+    echo "8. htop"
+    echo "9. nload"
+    echo "10. iftop"
+    echo "11. xfreerdp (Remote Desktop Connection)"
+    echo "12. Return to Main Menu"
+    echo "------------------"
+    read -p "Enter your choice: " choice
+
+    case $choice in
+        1) custom_command "sl" ;;
+        2) sudo apt install -y ollama && ollama run Dolphin-Mistral ;;
+        3) if [ -f custom_col.set ]; then rm custom_col.set; fi && set_custom_color ;;
+        4) custom_command "ifconfig" ;;
+        5) custom_command "netstat" ;;
+        6) custom_command "iptables" ;;
+        7) custom_command "top" ;;
+        8) custom_command "htop" ;;
+        9) custom_command "nload" ;;
+        10) custom_command "iftop" ;;
+        11) check_install_xfreerdp && custom_command xfreerdp ;;
+        12) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 12." && sleep 2 ;;
+    esac
+}
+
+
+install_volatility() {
+    # Clone the Volatility repository
+    git clone https://github.com/volatilityfoundation/volatility.git
+    # Move into the Volatility directory
+    cd volatility || exit
+    # Install Volatility
+    sudo python setup.py install
+    # Check if Volatility is installed
+    if command -v python &>/dev/null && python vol.py -h &>/dev/null; then
+        echo "Volatility installation successful!"
+    else
+        echo "Volatility installation failed."
+    fi
+}
+
+# Call the function to install Volatility
+#install_volatility
+
+
+# Function to install netcat package on Raspbian OS
+install_netcat() {
+    #echo "Checking if netcat (nc) is installed..."
+    if [ -x "$(command -v nc)" ]; then
+        echo ""
+    else
+        echo "netcat (nc) not found. Attempting to install it..."
+        if sudo apt update -y && sudo apt install -y netcat-openbsd; then
+            echo "netcat (nc) installed successfully."
+        elif sudo apt update -y && sudo apt install -y netcat-traditional; then
+            echo "netcat (nc) installed successfully."
+        else
+            echo "Error: Failed to install netcat (nc)."
+            # Handle specific error cases here, if needed
+        fi
+    fi
+}
+
+# Install nc
+install_netcat
+
+custom_command() {
+    if ! check_disclaimer; then
+        display_disclaimer
+        return
+    fi
+    #echo "Disclaimer Accepted!"
+
+    # Extract the first word in the command for help lookup
+    command=$(echo "$1" | awk '{print $1}')
+
+    # Verify permissions if sudo is required
+    if [[ $command == *"sudo"* && $(id -u) -ne 0 ]]; then
+        echo "Error: This command requires elevated privileges. Please run the script with sudo."
+        return
+    fi
+
+    # Check if the command is installed
+    if ! command -v "$command" &>/dev/null; then
+        # Prompt the user to install the missing command
+        read -p "$command is not installed. Do you want to install it? (y/n): " install_choice
+        if [[ $install_choice == "y" || $install_choice == "Y" ]]; then
+            sudo apt install -y "$command"
+            echo "$command installed successfully!"
+        else
+            echo "$command is required for this command. Aborting."
+            return
+        fi
+    fi
+
+    # Print help information for the selected program
+    echo "Help information for $command:"
+    # Try --help option first
+    if ! $command --help ; then
+        # If --help fails, try -help option
+        if ! $command -help ; then
+            echo "Error: Help information not available for $command"
+            return
+        fi
+    fi
+
+    # Prompt for customization
+    read -p "Enter Customization (e.g. -p port IP): " customization
+
+    # Execute the customized command
+    echo "Executing command: $1 $customization"
+    sudo $1 $customization
+
+    # Wait for user input before returning to the main menu
+    read -p "Press Enter to continue..."
+    #bash ehm.sh
+    main_menu
+}
+
 # Start the script
 main_menu
 
