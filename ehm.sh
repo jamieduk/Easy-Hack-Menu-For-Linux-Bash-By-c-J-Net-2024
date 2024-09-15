@@ -138,7 +138,7 @@ display_agreement() {
         else
             echo "Thank you for agreeing to the terms."
             # Save agreement to a file
-            echo "User agreed to the terms on $(date)" > agreement.log
+            echo "User $USER agreed to the terms on $(date)" > agreement.log
         fi
     fi
 }
