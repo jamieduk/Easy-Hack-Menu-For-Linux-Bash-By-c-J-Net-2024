@@ -483,6 +483,7 @@ enumeration_menu() {
         *) echo "Invalid choice. Please enter a number between 1 and 15." && sleep 2 ;;
     esac
 }
+
 GREEN='\033[0;32m'
 NC='\033[0m' # No color (reset)
 echo -e "${GREEN} Welcome To EHM"
@@ -490,6 +491,10 @@ echo -e "${GREEN} Welcome To EHM"
 # Main menu function
 main_menu() {
     clear
+    GREEN='\033[0;32m'
+NC='\033[0m' # No color (reset)
+echo -e "${GREEN} Welcome To EHM"
+
     echo "### Main Menu ###"
     echo "1. Exploitation"
     echo "2. Post-Exploitation"
@@ -658,7 +663,7 @@ custom_command() {
     #bash ehm.sh
     main_menu
 }
-
+display_agreement
 # Start the script
 main_menu
 
