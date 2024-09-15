@@ -567,7 +567,7 @@ main_menu() {
                  | |___|  _  | |  | |
                  |_____|_| |_|_|  |_|
 
-Easy Hack Menu (c) J~Net 2024""
+Easy Hack Menu (c) J~Net 2024"
 
     echo "### Main Menu ###"
     echo "1. Exploitation"
