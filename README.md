@@ -47,6 +47,8 @@ Easy Hack Menu (c) J~Net 2024
 9. SQLmap
 10. Remote Menu
 11. Exit
+------------------
+
 
 
 
