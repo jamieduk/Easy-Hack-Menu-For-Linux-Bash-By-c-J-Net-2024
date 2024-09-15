@@ -545,7 +545,14 @@ enumeration_menu() {
 
 GREEN='\033[0;32m'
 NC='\033[0m' # No color (reset)
-echo -e "${GREEN} Welcome To EHM"
+echo -e "${GREEN} Welcome To 
+                  _____ _   _ __  __ 
+                 | ____| | | |  \/  |
+                 |  _| | |_| | |\/| |
+                 | |___|  _  | |  | |
+                 |_____|_| |_|_|  |_|
+
+Easy Hack Menu (c) J~Net 2024"
 
 
 # Main menu function
@@ -553,7 +560,14 @@ main_menu() {
     clear
     GREEN='\033[0;32m'
     NC='\033[0m' # No color (reset)
-    echo -e "${GREEN} Welcome To EHM"
+    echo -e "${GREEN} Welcome To 
+                  _____ _   _ __  __ 
+                 | ____| | | |  \/  |
+                 |  _| | |_| | |\/| |
+                 | |___|  _  | |  | |
+                 |_____|_| |_|_|  |_|
+
+Easy Hack Menu (c) J~Net 2024""
 
     echo "### Main Menu ###"
     echo "1. Exploitation"
