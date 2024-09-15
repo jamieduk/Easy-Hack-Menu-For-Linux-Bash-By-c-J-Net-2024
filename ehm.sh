@@ -19,6 +19,7 @@ packages=(
     "netcat-openbsd"
     "hping3"
     "nmap"
+    "sqlmap"
     "whatweb"
     "dirb"
     "dirsearch"
@@ -50,6 +51,34 @@ packages=(
     "reaver"
     "socat"
 )
+# Function to display and execute SQLmap commands
+sqlmap_menu() {
+    clear
+    echo "### SQLmap Commands ###"
+    echo "1. Basic SQLmap scan"
+    echo "2. SQLmap with a specific URL"
+    echo "3. SQLmap with custom user-agent"
+    echo "4. SQLmap with a specific payload"
+    echo "5. SQLmap with enumeration of databases"
+    echo "6. SQLmap with enumeration of tables"
+    echo "7. SQLmap with enumeration of columns"
+    echo "8. Return to Main Menu"
+    echo "------------------"
+    read -p "Enter your choice: " choice
+
+    case $choice in
+        1) custom_command "sqlmap -u http://example.com/vulnerable.php?id=1 --batch" ;;
+        2) read -p "Enter the URL: " url && custom_command "sqlmap -u $url --batch" ;;
+        3) read -p "Enter the User-Agent: " user_agent && custom_command "sqlmap -u http://example.com/vulnerable.php?id=1 --user-agent \"$user_agent\" --batch" ;;
+        4) read -p "Enter the payload: " payload && custom_command "sqlmap -u http://example.com/vulnerable.php?id=1 --payload \"$payload\" --batch" ;;
+        5) custom_command "sqlmap -u http://example.com/vulnerable.php?id=1 --dbs --batch" ;;
+        6) read -p "Enter the database name: " db_name && custom_command "sqlmap -u http://example.com/vulnerable.php?id=1 -D $db_name --tables --batch" ;;
+        7) read -p "Enter the database name: " db_name && read -p "Enter the table name: " table_name && custom_command "sqlmap -u http://example.com/vulnerable.php?id=1 -D $db_name -T $table_name --columns --batch" ;;
+        8) main_menu ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 8." && sleep 2 ;;
+    esac
+}
+
 
 # Function to check if a package is installed
 package_installed() {
@@ -454,48 +483,40 @@ enumeration_menu() {
         *) echo "Invalid choice. Please enter a number between 1 and 15." && sleep 2 ;;
     esac
 }
+GREEN='\033[0;32m'
+NC='\033[0m' # No color (reset)
+echo -e "${GREEN} Welcome To EHM"
 
 # Main menu function
 main_menu() {
-    while true; do
-        custom_color=""
-        if [ -f "custom_col.set" ]; then
-            custom_color=$(<custom_col.set)
-            colour=$custom_color
-        else
-            colour="\033[1;32m"
-        fi
+    clear
+    echo "### Main Menu ###"
+    echo "1. Exploitation"
+    echo "2. Post-Exploitation"
+    echo "3. Miscellaneous"
+    echo "4. Analysis"
+    echo "5. Cracking"
+    echo "6. Extra"
+    echo "7. Reconnaissance"
+    echo "8. Enumeration"
+    echo "9. SQLmap"  # Added SQLmap option
+    echo "10. Exit"
+    echo "------------------"
+    read -p "Enter your choice: " choice
 
-        echo -e "${colour}Easy Hack Menu For Linux Bash By (c) J~Net 2024"
-        echo ""
-        echo "### Main Menu ###"
-        echo "1. Reconnaissance Commands"
-        echo "2. Enumeration Commands"
-        echo "3. Exploitation Commands"
-        echo "4. Post-Exploitation Commands"
-        echo "5. Miscellaneous Commands"
-        echo "6. Analysis Commands"
-        echo "7. Cracking Commands"
-        echo "8. Extra Commands & Settings"
-        echo "9. Launch Metasploit Console"
-        echo "10. Exit"
-        echo "------------------"
-        read -p "Enter your choice: " choice
-
-        case $choice in
-            1) reconnaissance_menu ;;
-            2) enumeration_menu ;;
-            3) exploitation_menu ;;  # Placeholder, to be implemented
-            4) post_exploitation_menu ;;  # Placeholder, to be implemented
-            5) miscellaneous_menu ;;  # Placeholder, to be implemented
-            6) analysis_menu ;;  # Placeholder, to be implemented
-            7) cracking_menu ;;  # Placeholder, to be implemented
-            8) extra_menu ;;  # Placeholder, to be implemented
-            9) custom_command "msfconsole" ;;
-            10) echo "Exiting..." && break ;;
-            *) echo "Invalid choice. Please enter a number between 1 and 10." && sleep 2 ;;
-        esac
-    done
+    case $choice in
+        1) exploitation_menu ;;
+        2) post_exploitation_menu ;;
+        3) miscellaneous_menu ;;
+        4) analysis_menu ;;
+        5) cracking_menu ;;
+        6) extra_menu ;;
+        7) reconnaissance_menu ;;
+        8) enumeration_menu ;;
+        9) sqlmap_menu ;;  # Added SQLmap menu
+        10) exit 0 ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 10." && sleep 2 ;;
+    esac
 }
 
 
