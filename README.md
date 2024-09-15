@@ -25,17 +25,20 @@ Run the script:
 bash
 Copy code
 ./ehm.sh
-Main Menu
-Reconnaissance Commands
-Enumeration Commands
-Exploitation Commands
-Post-Exploitation Commands
-Miscellaneous Commands
-Analysis Commands
-Cleanup Commands
-Fun Commands
-Exit
-Enter your choice:
+Easy Hack Menu For Linux Bash By (c) J~Net 2024
+
+### Main Menu ###
+1. Reconnaissance Commands
+2. Enumeration Commands
+3. Exploitation Commands
+4. Post-Exploitation Commands
+5. Miscellaneous Commands
+6. Analysis Commands
+7. Cracking Commands
+8. Extra Commands & Settings
+9. Launch Metasploit Console
+10. Exit
+
 
 Choose an option from the main menu and follow the prompts to customize and execute commands.
 
