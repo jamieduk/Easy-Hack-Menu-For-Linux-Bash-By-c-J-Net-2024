@@ -317,6 +317,65 @@ analysis_menu() {
     esac
 }
 
+# Define the remote menu functions
+remote_menu() {
+    echo "Remote Menu"
+    echo "1. Connect to RDP"
+    echo "2. Brute Force RDP"
+    echo "3. Exit"
+}
+
+connect_rdp() {
+    read -p "Enter IP address: " ip
+    read -p "Enter username: " username
+    read -sp "Enter password: " password
+    echo
+    xfreerdp /u:$username /p:$password /v:$ip
+}
+
+brute_force_rdp() {
+    read -p "Enter file with IP addresses: " ip_file
+    read -p "Enter file with usernames: " username_file
+    read -p "Enter file with passwords: " password_file
+
+    while IFS= read -r ip; do
+        while IFS= read -r username; do
+            while IFS= read -r password; do
+                echo "Attempting $username:$password on $ip"
+                # Use a tool like xfreerdp or custom script to attempt connection
+                # Example command, replace with actual brute force command:
+                xfreerdp /u:$username /p:$password /v:$ip
+                # Implement your logic to check if the connection was successful
+            done < "$password_file"
+        done < "$username_file"
+    done < "$ip_file"
+}
+
+execute_remote_menu() {
+    while true; do
+        remote_menu
+        read -p "Select an option [1-3]: " option
+        case $option in
+            1)
+                connect_rdp
+                ;;
+            2)
+                brute_force_rdp
+                ;;
+            3)
+                main_menu
+                ;;
+            *)
+                echo "Invalid option. Please try again."
+                ;;
+        esac
+    done
+}
+
+# Call this function when needed to run the remote menu
+# Example usage:
+# execute_remote_menu
+
 
 # Function to display and execute cracking commands
 cracking_menu() {
@@ -488,12 +547,13 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No color (reset)
 echo -e "${GREEN} Welcome To EHM"
 
+
 # Main menu function
 main_menu() {
     clear
     GREEN='\033[0;32m'
-NC='\033[0m' # No color (reset)
-echo -e "${GREEN} Welcome To EHM"
+    NC='\033[0m' # No color (reset)
+    echo -e "${GREEN} Welcome To EHM"
 
     echo "### Main Menu ###"
     echo "1. Exploitation"
@@ -505,7 +565,8 @@ echo -e "${GREEN} Welcome To EHM"
     echo "7. Reconnaissance"
     echo "8. Enumeration"
     echo "9. SQLmap"  # Added SQLmap option
-    echo "10. Exit"
+    echo "10. Remote Menu" # New option for Remote Menu
+    echo "11. Exit"
     echo "------------------"
     read -p "Enter your choice: " choice
 
@@ -519,8 +580,9 @@ echo -e "${GREEN} Welcome To EHM"
         7) reconnaissance_menu ;;
         8) enumeration_menu ;;
         9) sqlmap_menu ;;  # Added SQLmap menu
-        10) exit 0 ;;
-        *) echo "Invalid choice. Please enter a number between 1 and 10." && sleep 2 ;;
+        10) execute_remote_menu ;; # Call the remote menu function
+        11) exit 0 ;;
+        *) echo "Invalid choice. Please enter a number between 1 and 11." && sleep 2 ;;
     esac
 }
 
