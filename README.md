@@ -27,7 +27,14 @@ Copy code
 ./ehm.sh
 Easy Hack Menu For Linux Bash By (c) J~Net 2024
 
- Welcome To EHM
+ Welcome To 
+                  _____ _   _ __  __ 
+                 | ____| | | |  \/  |
+                 |  _| | |_| | |\/| |
+                 | |___|  _  | |  | |
+                 |_____|_| |_|_|  |_|
+
+Easy Hack Menu (c) J~Net 2024
 ### Main Menu ###
 1. Exploitation
 2. Post-Exploitation
@@ -40,8 +47,7 @@ Easy Hack Menu For Linux Bash By (c) J~Net 2024
 9. SQLmap
 10. Remote Menu
 11. Exit
-------------------
-Enter your choice: 10
+
 
 
 Choose an option from the main menu and follow the prompts to customize and execute commands.
