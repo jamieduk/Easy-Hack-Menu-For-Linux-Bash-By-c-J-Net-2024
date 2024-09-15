@@ -691,11 +691,6 @@ install_netcat() {
 install_netcat
 
 custom_command() {
-    if ! check_disclaimer; then
-        display_disclaimer
-        return
-    fi
-    #echo "Disclaimer Accepted!"
 
     # Extract the first word in the command for help lookup
     command=$(echo "$1" | awk '{print $1}')
