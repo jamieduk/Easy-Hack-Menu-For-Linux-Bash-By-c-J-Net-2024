@@ -28,16 +28,18 @@ Copy code
 Easy Hack Menu For Linux Bash By (c) J~Net 2024
 
 ### Main Menu ###
-1. Reconnaissance Commands
-2. Enumeration Commands
-3. Exploitation Commands
-4. Post-Exploitation Commands
-5. Miscellaneous Commands
-6. Analysis Commands
-7. Cracking Commands
-8. Extra Commands & Settings
-9. Launch Metasploit Console
+1. Exploitation
+2. Post-Exploitation
+3. Miscellaneous
+4. Analysis
+5. Cracking
+6. Extra
+7. Reconnaissance
+8. Enumeration
+9. SQLmap
 10. Exit
+------------------
+Enter your choice: 
 
 
 Choose an option from the main menu and follow the prompts to customize and execute commands.
